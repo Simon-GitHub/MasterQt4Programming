@@ -1,0 +1,11 @@
+ipch
+*.sln
+*.suo
+*.sdf
+*.vcxproj
+*.filters
+*.user
+debug
+GeneratedFiles
+Win32
+bin

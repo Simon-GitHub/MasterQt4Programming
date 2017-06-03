@@ -8,8 +8,8 @@ class WorkThread : public QThread
  protected:
 //  		 WorkThread ( QObject * parent = 0 );
      void run();
-// private:
-// 		 QString str;
+ private:
+ 		 QString str;
 };
  
 #endif

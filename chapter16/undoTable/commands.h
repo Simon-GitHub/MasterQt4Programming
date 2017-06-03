@@ -13,7 +13,7 @@ class TextColorCommand : public QUndoCommand
 public:
 	TextColorCommand(UndoWidget *undoWidget, QColor beforeColor, QColor afterColor, QUndoCommand *parent = 0);
 
-    void undo();
+    void uondo();
     void redo();
 
 private:

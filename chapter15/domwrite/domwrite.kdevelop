@@ -18,7 +18,7 @@
     </general>
     <kdevfileview>
         <groups>
-            <group pattern="*.cpp;*.cxx;*.h" name="Sources" />
+            <group pattern="*.cpp;*.cxx;*.h" name="Sources"/>
         </groups>
     </kdevfileview>
 </kdevelop>

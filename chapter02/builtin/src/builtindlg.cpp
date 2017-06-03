@@ -53,7 +53,7 @@ void CBuiltinDlg::doPushBtn()
 			displayTextEdit->setPalette(palette);	
 		}
 	}
-else if(btn == errorPushBtn)
+	else if(btn == errorPushBtn)
 	{// 错误信息框.
 		QErrorMessage box(this);
 		box.setWindowTitle(tr("错误信息框"));

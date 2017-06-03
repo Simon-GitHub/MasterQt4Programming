@@ -33,5 +33,8 @@ void ArrowWidget::paintEvent(QPaintEvent *event)
 	textPath.addText(200, 300, font, tr("电子工业出版社"));
 	painter.setBrush(linearGrad);
 	painter.drawPath(textPath);
+#if 0
+	painter.drawRect(100,305,1500,100);
+#endif
 }
 

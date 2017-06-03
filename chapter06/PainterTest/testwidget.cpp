@@ -154,7 +154,11 @@ void TestWidget::paintGradient(QPainter& painter)
 	painter.drawRect(0, 0, 200, 100);
 
 	painter.translate(0, 150);
+#if 1
 	QRadialGradient radialGradient(50, 50, 50, 30, 30);	// cx, cy, radius, fx, fy
+#else
+	QRadialGradient radialGradient(50, 50, 50, 50, 50);	// cx, cy, radius, fx, fy
+#endif
 	radialGradient.setColorAt(0.2, Qt::cyan);
 	radialGradient.setColorAt(0.8, Qt::yellow);
 	radialGradient.setColorAt(1, Qt::magenta);
@@ -162,11 +166,23 @@ void TestWidget::paintGradient(QPainter& painter)
 	painter.drawEllipse(0, 0, 100, 100);
 	
 	painter.translate(0, 150);
+#if 0
 	QConicalGradient conicalGradient(60, 40, 30);			// cx, cy, angle
+#else
+	QConicalGradient conicalGradient(50, 50, 0);			// cx, cy, angle
+#endif
 	conicalGradient.setColorAt(0, Qt::gray);
 	conicalGradient.setColorAt(0.4, Qt::darkGreen);
 	conicalGradient.setColorAt(0.6, Qt::darkMagenta);
 	conicalGradient.setColorAt(1, Qt::darkBlue);
 	painter.setBrush(conicalGradient);
 	painter.drawEllipse(0, 0, 100, 100);
+
+	painter.translate(0, 150);
+	QPixmap pixmap("./Desert.jpg");
+	QBrush brush;
+	brush.setColor(Qt::red);
+	brush.setTexture(pixmap);
+	painter.setBrush(brush);
+	painter.drawRect(0, 0, 900, 900);
 }

@@ -27,6 +27,9 @@ void RadarView::timerEvent(QTimerEvent *)
 	foreach(item, itemList)
 	{
 		Target* target = (Target*) item;
+		qreal x = target->speed * cos(target->course);
+		qreal y = target->speed * sin(target->course);
+		QPointF pf = target->mapToParent(target->speed * cos(target->course), target->speed * sin(target->course));
 	   	target->setPos(target->mapToParent(target->speed * cos(target->course), 
 	   		target->speed * sin(target->course)));
 	}

@@ -4,9 +4,11 @@
 #include <QThread>
 
 class WorkThread : public QThread
-{
+{  	
+public:
+	//WorkThread ( QObject * parent = 0 );
+
  protected:
-//  		 WorkThread ( QObject * parent = 0 );
      void run();
  private:
  		 QString str;

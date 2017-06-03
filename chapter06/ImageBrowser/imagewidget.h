@@ -14,6 +14,7 @@ public:
 public:
 	ImageWidget(QWidget *parent = 0);
 	void setPixmap(QString fileName);
+	void setPixmap(QPixmap pixmap);
 	QPixmap getPixmap();
 	void setAngle(qreal rotateAngle);
 	    

@@ -122,7 +122,7 @@ void ConnDlg::addSqliteConnection()
 void ConnDlg::creatDB()
 {
 	 QSqlQuery query;
-   query.exec("create table factory (id int primary key, "
+	query.exec("create table factory (id int primary key, "
                                      "manufactory varchar(40), "
                                      "address varchar(40))");
     query.exec(QObject::tr("insert into factory values(1, '一汽大众', '长春')"));

@@ -84,7 +84,8 @@ void Dialog::updateClientProgress(qint64 numBytes)
     }
     else{  
     	localFile->close();
-    }
+		QApplication::restoreOverrideCursor();
+   }
     clientProgressBar->setMaximum(TotalBytes);
     clientProgressBar->setValue(bytesWritten);
     clientStatusLabel->setText(tr("已发送 %1MB")
@@ -93,18 +94,18 @@ void Dialog::updateClientProgress(qint64 numBytes)
 
 void Dialog::displayError(QAbstractSocket::SocketError socketError)
 {
-    if (socketError == QTcpSocket::RemoteHostClosedError)
-        return;
+    //if (socketError == QTcpSocket::RemoteHostClosedError)
+    //    return;
 
-    QMessageBox::information(this, tr("网络"),
-                             tr("产生如下错误: %1.")
-                             .arg(tcpClient.errorString()));
+    //QMessageBox::information(this, tr("网络"),
+    //                         tr("产生如下错误: %1.")
+    //                         .arg(tcpClient.errorString()));
 
-    tcpClient.close();
-    clientProgressBar->reset();
-    clientStatusLabel->setText(tr("客户端就绪"));
-    startButton->setEnabled(true);
-    QApplication::restoreOverrideCursor();
+    //tcpClient.close();
+    //clientProgressBar->reset();
+    //clientStatusLabel->setText(tr("客户端就绪"));
+    //startButton->setEnabled(true);
+    //QApplication::restoreOverrideCursor();
 }
 
 void Dialog::openFile()

@@ -24,11 +24,11 @@ Msg::Msg()
 
 void Msg::directoryChanged(QString path)
 {
-	QMessageBox::information(NULL, tr("目录有变化"), path);
+	QMessageBox::information(NULL, tr("dir changed"), path);
 }
 
 void Msg::fileChanged(QString path)
 {
-	QMessageBox::information(NULL, tr("文件有变化"), path);
+	QMessageBox::information(NULL, tr("file changed"), path);
 }
 

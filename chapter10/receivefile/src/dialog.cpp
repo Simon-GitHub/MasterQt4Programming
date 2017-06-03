@@ -57,14 +57,19 @@ void Dialog::start()
 
 void Dialog::acceptConnection()
 {
-    tcpServerConnection = tcpServer.nextPendingConnection();
+	{
+		TotalBytes = 0;
+		bytesReceived = 0;
+		fileNameSize = 0;
+	}
+	tcpServerConnection = tcpServer.nextPendingConnection();
     connect(tcpServerConnection, SIGNAL(readyRead()),
             this, SLOT(updateServerProgress()));
     connect(tcpServerConnection, SIGNAL(error(QAbstractSocket::SocketError)),
             this, SLOT(displayError(QAbstractSocket::SocketError)));
 
     serverStatusLabel->setText(tr("接受连接"));
-    tcpServer.close();
+    //tcpServer.close();
 }
 
 void Dialog::updateServerProgress()
@@ -72,25 +77,28 @@ void Dialog::updateServerProgress()
     QDataStream in(tcpServerConnection);
     in.setVersion(QDataStream::Qt_4_3);
     
-    if(bytesReceived <= sizeof(qint64)*2){
-      if((tcpServerConnection->bytesAvailable() >= sizeof(qint64)*2)&&(fileNameSize ==0)){
-      	in>>TotalBytes>>fileNameSize;
-	bytesReceived += sizeof(qint64)*2;
-       }       
-      if((tcpServerConnection->bytesAvailable() >= fileNameSize)&&(fileNameSize !=0)){
-       in>>fileName;
-       bytesReceived += fileNameSize;
-       localFile = new QFile(fileName);
-       	if (!localFile->open(QFile::WriteOnly )) {
-        	QMessageBox::warning(this, tr("应用程序"),
-                             tr("无法读取文件 %1:\n%2.")
-                             .arg(fileName)
-                             .arg(localFile->errorString()));
-        	return;
-    	}   
-      }else{
-      		return;
-      }
+    if(bytesReceived <= sizeof(qint64)*2)
+	{
+		if((tcpServerConnection->bytesAvailable() >= sizeof(qint64)*2)&&(fileNameSize ==0))
+		{
+			in>>TotalBytes>>fileNameSize;
+			bytesReceived += sizeof(qint64)*2;
+		}       
+		if((tcpServerConnection->bytesAvailable() >= fileNameSize)&&(fileNameSize !=0))
+		{
+			in>>fileName;
+			bytesReceived += fileNameSize;
+			localFile = new QFile(fileName);
+			if (!localFile->open(QFile::WriteOnly )) 
+			{
+				QMessageBox::warning(this, tr("应用程序"),tr("无法读取文件 %1:\n%2.").arg(fileName).arg(localFile->errorString()));
+				return;
+			}   
+		}
+		else
+		{
+			return;
+		}
     }
     
     if (bytesReceived < TotalBytes){

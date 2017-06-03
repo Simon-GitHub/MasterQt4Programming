@@ -26,10 +26,22 @@ void QPenStyleDelegate::paint(QPainter *painter,
 
     if (option.state & QStyle::State_Selected) {
         painter->save();
+#if 1
         painter->setBrush(option.palette.highlight());
+#else
+		painter->setBrush(option.palette.highlightedText());
+#endif
+#if 1
         painter->setPen(Qt::NoPen);
+#else
+		painter->setPen(Qt::DashLine);
+#endif 
         painter->drawRect(option.rect);
+#if 1
         painter->setPen(QPen(option.palette.highlightedText(),2, penStyle));
+#else
+		painter->setPen(QPen(index.data(Qt::TextColorRole).value<QColor>(),2, penStyle));
+#endif
     }
     else
     	painter->setPen(penStyle);
@@ -37,7 +49,6 @@ void QPenStyleDelegate::paint(QPainter *painter,
 
     if (option.state & QStyle::State_Selected)
         painter->restore();
-
 }
 
 QSize QPenStyleDelegate::sizeHint(const QStyleOptionViewItem &option,

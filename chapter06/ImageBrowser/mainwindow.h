@@ -26,6 +26,7 @@ public slots:
     void actualSize();
     void fitSize();
 	void copy();
+	void paste();
     void print();
     void present();
 
@@ -57,6 +58,7 @@ private:
     QAction *actualSizeAct;
     QAction *fitSizeAct;
 	QAction *copyAct;
+	QAction *pasteAct;
     QAction *printAct;
     QAction *presentAct;
 

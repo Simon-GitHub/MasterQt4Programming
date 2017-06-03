@@ -112,21 +112,25 @@ void ConnDlg::creatSqliteDB()
 {
     	QSqlDatabase::database("in_mem_db", false).close();
         QSqlDatabase::removeDatabase("in_mem_db");
-        QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE", "in_mem_db");
+        QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE", "in_mem_db222");
+#if 0
         db.setDatabaseName(":memory:");
+#else
+		db.setDatabaseName("myddb");
+#endif
         if (!db.open())
 			{
             	ui.status_label->setText(db.lastError().text());
 				return;
 			}
         QSqlQuery q("", db);
-        q.exec("drop table Names");
+        //q.exec("drop table Names");
         q.exec("create table Names (id integer primary key, Firstname varchar, Lastname varchar, City varchar)");
-        q.exec("insert into Names values (0, 'Sala', 'Palmer', 'Morristown')");
-        q.exec("insert into Names values (1, 'Christopher', 'Walker', 'Morristown')");
-        q.exec("insert into Names values (2, 'Donald', 'Duck', 'Andeby')");
-        q.exec("insert into Names values (3, 'Buck', 'Rogers', 'Paris')");
-        q.exec("insert into Names values (4, 'Sherlock', 'Holmes', 'London')");
+        q.exec("insert into Names values (1110, 'Sala', 'Palmer', 'Morristown')");
+        q.exec("insert into Names values (1111, 'Christopher', 'Walker', 'Morristown')");
+        q.exec("insert into Names values (1112, 'Donald', 'Duck', 'Andeby')");
+        q.exec("insert into Names values (113, 'Buck', 'Rogers', 'Paris')");
+        q.exec("insert into Names values (114, 'Sherlock', 'Holmes', 'London')");
 
 		ui.status_label->setText(tr("创建sqlite数据库成功!"));
 

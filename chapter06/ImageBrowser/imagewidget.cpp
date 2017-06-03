@@ -6,7 +6,11 @@ ImageWidget::ImageWidget(QWidget *parent)
 	: QWidget(parent)
 {
 	QDesktopWidget desktop;
+#if 1
 	pixmap = QPixmap(desktop.width(), desktop.height());
+#else
+	pixmap = QPixmap(width(), height());
+#endif
 	scale = 1;
 	angle = 0;
 	bFit = true;
@@ -36,6 +40,12 @@ void ImageWidget::paintEvent(QPaintEvent *event)
 void ImageWidget::setPixmap(QString fileName)
 {
 	pixmap.load(fileName);
+	update();
+}
+
+void ImageWidget::setPixmap(QPixmap _pixmap)
+{
+	pixmap = _pixmap;
 	update();
 }
 

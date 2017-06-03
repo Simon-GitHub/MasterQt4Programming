@@ -77,6 +77,10 @@ void MainWindow::createActions()
     copyAct->setShortcut(QKeySequence::Copy);
     connect(copyAct, SIGNAL(triggered()), this, SLOT(copy()));
 
+	pasteAct = new QAction(QIcon(":/images/copy.png"), tr("Paste"), this);
+	pasteAct->setShortcut(QKeySequence::Paste);
+	connect(pasteAct, SIGNAL(triggered()), this, SLOT(paste()));
+
     printAct = new QAction(QIcon(":/images/print.png"), tr("Print"), this);
     printAct->setShortcut(QKeySequence::Print);
     connect(printAct, SIGNAL(triggered()), this, SLOT(print()));
@@ -101,6 +105,7 @@ void MainWindow::createMenus()
     operMenu->addAction(fitSizeAct);
     operMenu->addSeparator();
 	operMenu->addAction(copyAct);
+	operMenu->addAction(pasteAct);
     operMenu->addAction(printAct);
     operMenu->addAction(presentAct);
 }
@@ -233,4 +238,10 @@ void MainWindow::copy()
 {
 	QPixmap pix = imageWidget->getPixmap();
 	clipboard->setImage(pix.toImage());	
+}
+
+void MainWindow::paste()
+{
+	QImage image = clipboard->image();
+	imageWidget->setPixmap(QPixmap::fromImage(image));
 }

@@ -9,3 +9,9 @@ debug
 GeneratedFiles
 Win32
 bin
+Debug
+release
+Makefile.Debug
+Makefile.Release
+Makefile
+Release

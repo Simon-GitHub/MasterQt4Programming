@@ -11,3 +11,4 @@ SOURCES += workThread.cpp \
 TARGET=../bin/startThread
 QT +=network
 CONFIG +=debug
+CONFIG += thread

@@ -7,7 +7,7 @@
 
 #include "radar.h"
 
-static const int TargetCount = 1500;
+static const int TargetCount = 1;
 
 int main(int argc, char **argv)
 {

@@ -8,7 +8,7 @@ EditorDelegate::EditorDelegate(QObject *parent)
 }
 
 QWidget *EditorDelegate::createEditor(QWidget *parent,
-	const QStyleOptionViewItem& option,
+    const QStyleOptionViewItem& option,
     const QModelIndex& index) const
 {
 	if(index.column() == 1)		// birthday

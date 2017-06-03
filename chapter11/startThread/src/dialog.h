@@ -3,7 +3,7 @@
 #define DIALOG_H
 
 #include <QDialog>
-#define MAXSIZE 5
+#define MAXSIZE 1
 class QDialogButtonBox;
 class QProgressBar;
 class QPushButton;

@@ -77,4 +77,3 @@ QString CompassPlugin::includeFile() const
 }
 
 Q_EXPORT_PLUGIN2(compassplugin, CompassPlugin)
-//Q_PLUGIN_METADATA(compassplugin, CompassPlugin)

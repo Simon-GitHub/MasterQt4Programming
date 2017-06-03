@@ -1,6 +1,10 @@
 #include <QtGui>
 
+#if 0
 #include "pathwidget.h"
+#else
+#include "arrowwidget.h"
+#endif
 #include "mainwindow.h"
 
 MainWindow::MainWindow()

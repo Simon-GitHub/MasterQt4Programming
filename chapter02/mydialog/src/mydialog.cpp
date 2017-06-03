@@ -33,7 +33,7 @@ int main(int argc, char* argv[])
 			exit(1);
 		}
 	}
-    CLoginDlg dlg;	
+	CLoginDlg dlg;	
 	return dlg.exec();	
 }
 

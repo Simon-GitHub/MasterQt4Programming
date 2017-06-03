@@ -34,13 +34,21 @@ void Form::mouseMoveEvent(QMouseEvent *event)
 	w = event->x() - x;
 	h = event->y() - y;
     tempImage = bufferImage;
+#if 1
 	paint(tempImage);
+#else
+	paint(bufferImage);
+#endif
 }
 
 void Form::mouseReleaseEvent(QMouseEvent *event)
 {
 	bDrawing = false;
+#if 1
 	paint(bufferImage);
+#else
+	bufferImage = tempImage;
+#endif
 }
 
 void Form::paintEvent(QPaintEvent *event)

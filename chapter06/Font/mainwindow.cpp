@@ -85,6 +85,7 @@ void MainWindow::listAllFonts()
 			cursor = fontEdit->textCursor();
 	        cursor.insertText(QString("%1 %2").arg(family).arg(style), textFormat);
  			cursor.insertBlock();
+			//fontEdit->setTextCursor(cursor);
 		}
     }
 }
@@ -95,8 +96,16 @@ void MainWindow::updateColor()
     QPainter painter(&pixmap);
     painter.fillRect(0, 0, 32, 32, fontColor);
 
+#if 1
     QColor lighter = fontColor.light();
+#else
+	QColor lighter = fontColor.darker();
+#endif
+#if 1
     painter.setPen(lighter);
+#else
+	painter.setPen(Qt::red);
+#endif
     QPoint lightFrame[] = { QPoint(0, 31), QPoint(0, 0), QPoint(31, 0) };
     painter.drawPolyline(lightFrame, 3);
 

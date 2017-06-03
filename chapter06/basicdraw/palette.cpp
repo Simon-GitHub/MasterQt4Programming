@@ -141,7 +141,11 @@ void Palette::brushChanged()
         conicalGradient.setColorAt(1.0, Qt::black);
         brush = conicalGradient;
     } else if (style == Qt::TexturePattern) {
+#if 0
         brush = QBrush(QPixmap(":/images/ellipse.png"));
+#else
+		brush = QBrush(QPixmap(":/images/Desert.jpg"));
+#endif
     } else {
 		brush.setColor(color);
 		brush.setStyle(style);
